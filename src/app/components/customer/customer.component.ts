@@ -33,7 +33,8 @@ export class CustomerComponent implements OnInit {
     if (id == null) {
     } else {
       this.customerService.getById(id).subscribe(
-        res => this.formGroup.patchValue(res)
+        res => this.formGroup.patchValue(res),
+        err =>  console.log(err)
       )
     }
 
@@ -53,6 +54,7 @@ export class CustomerComponent implements OnInit {
   saveCustomer() {
 
     let customer: Customer = this.formGroup.value
+    console.log(customer)
     if (this.id != null) {
       customer.id = this.id
       this.customerService.update(customer).subscribe(
@@ -61,8 +63,8 @@ export class CustomerComponent implements OnInit {
       )
     } else {
       this.customerService.create(customer).subscribe(
-        res => this.alertService.success("Cliente salvo com sucesso"),
-        err => this.alertService.error("Não foi possível salvar"),
+        res => this.alertService.success("Cliente criado com sucesso"),
+        err => this.alertService.error("Não foi possível criar"),
       )
     }
 

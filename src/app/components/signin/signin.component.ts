@@ -3,6 +3,7 @@ import { User } from './../../entity/User';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GlobalAlertService } from 'src/app/services/GlobalAlertService';
+import { HttpResponse } from '@angular/common/http';
 declare var $: any;
 
 @Component({
@@ -38,11 +39,14 @@ export class SigninComponent implements OnInit {
 
   login(){
     let user: User = this.formGroup.value
-    console.log(user)
+
+    
     this.service.login(user).subscribe(    
-      res=> {
-        if(res == true) this.alert.success("Login realizado com sucesso")
-        else this.alert.warning("Login ou senha inválidos")
+      (res)=> {
+        console.log(res)
+          this.alert.success("Login realizado com sucesso")
+         localStorage.setItem("Token", res.headers.get('authorization')) 
+          
       },
     err => this.alert.error("Não foi possível realizar o login"),)
 

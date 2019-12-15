@@ -46,36 +46,33 @@ export class EquipmentComponent implements OnInit {
     }
 
   createForm() {
-    let user = new User("5df571969170343c2dee918f")
-    user.name = "Dérick Souza Miranda"
-    user.email = "derick_sm@hotmail.com"
     
     this.formGroup = this.formBuilder.group({
       type: ['', Validators.required],
-      user: [user, Validators.required],
       brand: ['', Validators.required],
       problem: ['', Validators.required],
       preview: ['', Validators.required],
       customer: ['', Validators.required],
       status: [1, Validators.required],
-      price: ['', Validators.required]
+      price: ['']
     });
   }
 
   saveOrder() {
     let order: Order = this.formGroup.value
-    if (this.id != null) {
-      order.id = this.id
-      this.orderService.update(order).subscribe(
-        res => this.alertService.success("Ordem de serviço atualizada com sucessa"),
-        err => this.alertService.error("Não foi possível atualizar"),
-      )
-    } else {
-      this.orderService.create(order).subscribe(
-        res => this.alertService.success("Ordem de serviço salva com sucessa"),
-        err => this.alertService.error("Não foi possível salvar"),
-      )
-    }
+    console.log(order)
+    // if (this.id != null) {
+    //   order.id = this.id
+    //   this.orderService.update(order).subscribe(
+    //     res => this.alertService.success("Ordem de serviço atualizada com sucessa"),
+    //     err => this.alertService.error("Não foi possível atualizar"),
+    //   )
+    // } else {
+    //   this.orderService.create(order).subscribe(
+    //     res => this.alertService.success("Ordem de serviço salva com sucessa"),
+    //     err => this.alertService.error("Não foi possível salvar"),
+    //   )
+    // }
 
   }
 

@@ -9,6 +9,7 @@
     </div>
 
     <div class="box-body">
+        {{orders}}
             <div class="list-group" *ngIf="orders.length > 0">
                 <ng-container *ngFor="let order of orders; let i = index">
                     <button type="button"

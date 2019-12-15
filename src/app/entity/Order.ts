@@ -19,7 +19,6 @@ export enum Status {
 export class Order {
     id: string
     type: string
-    user: User
     brand: string
     problem: string
     preview: string
