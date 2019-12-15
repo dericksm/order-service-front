@@ -1,0 +1,24 @@
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Ordens de serviço</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+        </div>
+    </div>
+
+    <div class="box-body">
+            <div class="list-group" *ngIf="orders.length > 0">
+                <ng-container *ngFor="let order of orders; let i = index">
+                    <button type="button"
+                    [routerLink]="['//orders']" [queryParams]="{id: order.id}"
+                     class="list-group-item list-group-item-action">Cliente: {{order.customer.name}} - Status: {{status[order.status]}}</button>
+                </ng-container>
+            </div>
+            <div *ngIf="orders.length == 0">
+                <span>Nenhuma ordem cadastrada</span>
+            </div>
+    </div>
+
+</div>
