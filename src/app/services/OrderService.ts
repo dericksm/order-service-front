@@ -34,7 +34,7 @@ export class OrderService {
 
   public update<Order>(order: Order): Observable<Order> {
     const config = { headers: new HttpHeaders().set('Authorization', this.getHeader()).set('Content-Type', 'application/json') };
-    return this.http.put<Order>(API, JSON.stringify(order), config)
+    return this.http.patch<Order>(API, JSON.stringify(order), config)
   }  
   
   public delete(id: string) {

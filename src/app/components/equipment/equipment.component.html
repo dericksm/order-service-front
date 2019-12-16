@@ -17,7 +17,7 @@
                     <label>Cliente</label>
                     <select class="form-control select2" style="width: 100%;" formControlName="customer">
                         <option value="" selected="selected">Selecione o cliente</option>
-                        <option *ngFor="let customer of customers" [value]="customer">{{customer.name}}</option>
+                        <option *ngFor="let customer of customers" [ngValue]="customer">{{customer.name}}</option>
                     </select>
                     <span *ngIf="formGroup.get('customer').hasError('required') && formGroup.get('customer').touched"
                         class="help-block">Campo obrigatório</span>

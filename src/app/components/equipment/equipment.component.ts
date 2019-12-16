@@ -60,19 +60,19 @@ export class EquipmentComponent implements OnInit {
 
   saveOrder() {
     let order: Order = this.formGroup.value
-    console.log(order)
-    // if (this.id != null) {
-    //   order.id = this.id
-    //   this.orderService.update(order).subscribe(
-    //     res => this.alertService.success("Ordem de serviço atualizada com sucessa"),
-    //     err => this.alertService.error("Não foi possível atualizar"),
-    //   )
-    // } else {
-    //   this.orderService.create(order).subscribe(
-    //     res => this.alertService.success("Ordem de serviço salva com sucessa"),
-    //     err => this.alertService.error("Não foi possível salvar"),
-    //   )
-    // }
+    if (this.id != null) {
+      order.id = this.id
+      console.log(order)
+      this.orderService.update(order).subscribe(
+        res => this.alertService.success("Ordem de serviço atualizada com sucessa"),
+        err => console.log(err),
+      )
+    } else {
+      this.orderService.create(order).subscribe(
+        res => this.alertService.success("Ordem de serviço salva com sucessa"),
+        err => this.alertService.error("Não foi possível salvar"),
+      )
+    }
 
   }
 
